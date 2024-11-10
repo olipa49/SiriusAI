@@ -17,13 +17,13 @@ model = AutoModelForCausalLM.from_pretrained(
 	torch_dtype=torch.float16,
 	device_map="auto",
         offload_folder="offload/"
-)
+).to(torch.device("cuda"))
 model = PeftModel.from_pretrained(
 	model,
 	MODEL_NAME,
 	torch_dtype=torch.float16,
         offload_folder="offload/"
-)
+).to(torch.device("cuda"))
 model.eval()
 
 # Определяем токенайзер
