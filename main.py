@@ -15,7 +15,7 @@ model = AutoModelForCausalLM.from_pretrained(
 	config.base_model_name_or_path,
         load_in_8bit=False,
 	torch_dtype=torch.float16,
-	device_map="auto",
+	#device_map="auto",
         offload_folder="offload/"
 ).to(torch.device("cuda"))
 model = PeftModel.from_pretrained(
